@@ -19,6 +19,7 @@ public class Ruleta {
         Scanner respuesta = new Scanner(System.in);
         int opcion = leerOpcion(respuesta);
         ejecutarOpcion(opcion, respuesta);
+        leerTipoApuesta(respuesta);
     }
 
 
@@ -43,11 +44,9 @@ public class Ruleta {
     }
 
     public static void ejecutarOpcion(int opcion, Scanner in) {
-        if (opcion == 2) {
-            System.exit(0);
-        } else if (opcion == 1) {
-            iniciarRonda(in);
-
+        switch (opcion) {
+            case 1 -> iniciarRonda(in);
+            case 2 -> System.out.println("Gracias por jugar.");
         }
     }
 
@@ -61,8 +60,10 @@ public class Ruleta {
         System.out.println("5. cero/verde");
     }
 
-    public static void leerTipoApuesta(Scanner in) {
-        return;
+    public static char leerTipoApuesta(Scanner in) {
+        System.out.println("escoga su apuesta segun el numero correspondiente: ");
+        char respuesta = in.next().charAt(0);;
+        return respuesta;
     }
 
     public static int girarRuleta() {
